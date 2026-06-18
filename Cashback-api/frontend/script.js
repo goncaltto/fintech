@@ -1,5 +1,5 @@
 // URL base da API Python (Flask). Ajuste quando hospedar o backend.
-const API_BASE_URL = "http://127.0.0.1:5000";
+const API_BASE_URL = "https://fintech-jyhf.onrender.com";
 
 const form = document.getElementById("form-cashback");
 const resultadoSecao = document.getElementById("resultado");
