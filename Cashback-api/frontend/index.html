@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Cashback</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Calculadora de Cashback</h1>
+  </header>
+
+  <main id="conteudo-principal">
+
+    <!-- Formulario de calculo -->
+    <section aria-labelledby="titulo-formulario">
+      <h2 id="titulo-formulario">Calcular cashback</h2>
+
+      <form id="form-cashback" novalidate>
+        <div>
+          <label for="tipo_cliente">Tipo de cliente</label>
+          <select id="tipo_cliente" name="tipo_cliente" required aria-required="true">
+            <option value="padrao">Padrão</option>
+            <option value="vip">VIP</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="valor_compra">Valor da compra (R$)</label>
+          <input
+            type="number"
+            id="valor_compra"
+            name="valor_compra"
+            min="0"
+            step="0.01"
+            required
+            aria-required="true"
+            aria-describedby="ajuda-valor_compra"
+            inputmode="decimal"
+          >
+        </div>
+
+        <div>
+          <label for="desconto">Desconto (%)</label>
+          <input
+            type="number"
+            id="desconto"
+            name="desconto"
+            min="0"
+            max="100"
+            step="0.01"
+            value="0"
+            aria-describedby="ajuda-desconto"
+            inputmode="decimal"
+          >
+        </div>
+
+        <button type="submit">Calcular cashback</button>
+      </form>
+    </section>
+
+    <!-- Resultado do calculo -->
+    <section id="resultado" aria-labelledby="titulo-resultado" hidden>
+      <h2 id="titulo-resultado">Resultado</h2>
+      <p id="resultado-texto" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- Mensagem de erro -->
+    <p id="erro-mensagem" role="alert" aria-live="assertive" hidden></p>
+
+    <!-- Historico de consultas -->
+    <section id="historico" aria-labelledby="titulo-historico">
+      <h2 id="titulo-historico">Histórico de consultas</h2>
+
+      <table id="tabela-historico">
+        <caption class="sr-only">
+          Histórico de consultas de cashback realizadas a partir deste endereço IP
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Tipo de cliente</th>
+            <th scope="col">Valor da compra</th>
+            <th scope="col">Cashback</th>
+            <th scope="col">Data</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-historico-corpo">
+          <!-- linhas inseridas via JS -->
+        </tbody>
+      </table>
+
+      <p id="historico-vazio" role="status" aria-live="polite" hidden>
+        Nenhuma consulta encontrada para este IP.
+      </p>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
